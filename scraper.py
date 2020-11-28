@@ -16,7 +16,7 @@ def get_links():
     response = session.get(link,  headers=headers)
     data = response.text
     soup = BeautifulSoup(data, 'html.parser')
-    bin_link = re.finditer(r'<a href="busybox_[A-Z]+">', str(soup))
+    bin_link = re.finditer(r'>busybox_.+<', str(soup))
     name_list = [j.split('"')[1] for j in [i.group(0) for i in bin_link]]
     return name_list
 
